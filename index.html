@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Mikhail Bogoslavtsev — personal portfolio. Get in touch for collaboration and project requests." />
+  <meta name="theme-color" content="#0b0d12" />
+  <title>Mikhail Bogoslavtsev — Portfolio</title>
+  <link rel="preconnect" href="https://api.web3forms.com" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%237c5cff'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='system-ui,sans-serif' font-size='32' font-weight='700' fill='white'%3EMB%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#top" class="brand" aria-label="Home">
+        <span class="brand-mark" aria-hidden="true">MB</span>
+        <span class="brand-name">Mikhail Bogoslavtsev</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#contact" class="nav-cta">Request</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section id="top" class="hero">
+      <div class="container hero-inner">
+        <p class="eyebrow">Available for select projects</p>
+        <h1 class="hero-title">
+          Building thoughtful products at the intersection of
+          <span class="accent">design, code, and craft.</span>
+        </h1>
+        <p class="hero-sub">
+          I'm Mikhail — a product builder focused on clear thinking, useful software,
+          and the small details that make tools feel alive.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Send a request</a>
+          <a href="#work" class="btn btn-ghost">See selected work</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container">
+        <h2 class="section-title">About</h2>
+        <div class="about-grid">
+          <p class="lead">
+            I help teams ship software that earns its place. My background spans
+            product, engineering, and design — which means I'm comfortable moving
+            between the whiteboard, the codebase, and the customer call.
+          </p>
+          <ul class="stat-list" aria-label="At a glance">
+            <li><span class="stat-num">10+</span><span class="stat-label">years building</span></li>
+            <li><span class="stat-num">∞</span><span class="stat-label">curiosity</span></li>
+            <li><span class="stat-num">1</span><span class="stat-label">project at a time</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="work" class="section section-muted">
+      <div class="container">
+        <h2 class="section-title">Selected work</h2>
+        <div class="cards">
+          <article class="card">
+            <h3>Project One</h3>
+            <p>A short, honest description of what you shipped and why it mattered. Swap this copy and the link for your real work.</p>
+            <span class="tag">Product · 2025</span>
+          </article>
+          <article class="card">
+            <h3>Project Two</h3>
+            <p>Another concise case. Lead with the outcome, then the role you played, then the craft.</p>
+            <span class="tag">Engineering · 2024</span>
+          </article>
+          <article class="card">
+            <h3>Project Three</h3>
+            <p>A third placeholder. Three cards reads well on most screens — add more only when you have more to say.</p>
+            <span class="tag">Design · 2023</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container contact-wrap">
+        <div class="contact-copy">
+          <h2 class="section-title">Send a request</h2>
+          <p class="lead">
+            Have a project in mind? Tell me what you're working on, what you've tried,
+            and where you're stuck. I read every message.
+          </p>
+          <p class="contact-meta">Usually replies within 1–2 business days.</p>
+        </div>
+
+        <form id="contact-form" class="contact-form" novalidate>
+          <input type="hidden" name="access_key" value="d2994d38-9323-4750-acb9-b10bfd6e2715" />
+          <input type="hidden" name="subject" value="New request from portfolio site" />
+          <input type="hidden" name="from_name" value="mikhailbogoslavtsev.github.io" />
+          <input type="hidden" name="redirect" value="false" />
+
+          <!-- Honeypot: real users leave blank, bots fill it. Web3Forms drops on `botcheck`. -->
+          <input
+            type="checkbox"
+            name="botcheck"
+            class="hp-field"
+            tabindex="-1"
+            autocomplete="off"
+            aria-hidden="true"
+          />
+
+          <div class="field">
+            <label for="name">Your name</label>
+            <input id="name" name="name" type="text" required minlength="2" maxlength="80" autocomplete="name" />
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required maxlength="120" autocomplete="email" inputmode="email" />
+          </div>
+
+          <div class="field">
+            <label for="message">What can I help with?</label>
+            <textarea id="message" name="message" rows="6" required minlength="20" maxlength="3000"></textarea>
+            <small class="hint"><span id="char-count">0</span> / 3000</small>
+          </div>
+
+          <button type="submit" class="btn btn-primary" id="submit-btn">
+            <span class="btn-label">Send request</span>
+            <span class="btn-spinner" aria-hidden="true"></span>
+          </button>
+
+          <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+          <p class="form-fineprint">
+            Protected by honeypot + timing checks. Your message is sent over HTTPS and is not stored on this site.
+          </p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Mikhail Bogoslavtsev</p>
+      <p class="muted">Built with HTML, CSS, and care.</p>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
