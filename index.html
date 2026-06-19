@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Mikhail Bogoslavtsev — product builder. Strategy, design, and engineering for teams that ship. Get in touch for project requests." />
-  <meta name="theme-color" content="#d6f0e5" />
+  <meta name="theme-color" content="#FAF6F0" />
   <title>Mikhail Bogoslavtsev — Product Builder</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="preconnect" href="https://api.web3forms.com" />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232bd4bd' stroke='%23141414' stroke-width='4'/%3E%3Ctext x='50%25' y='57%25' text-anchor='middle' font-family='system-ui,sans-serif' font-size='28' font-weight='800' fill='%23141414'%3EMB%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23C5572E'/%3E%3Ctext x='50%25' y='57%25' text-anchor='middle' font-family='Georgia,serif' font-size='30' font-weight='600' fill='%23FAF6F0'%3EMB%3C/text%3E%3C/svg%3E" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -32,85 +32,125 @@
   </header>
 
   <main id="main">
+    <!-- Hero -->
     <section id="top" class="hero">
       <div class="container hero-grid">
-        <div class="hero-copy">
-          <p class="eyebrow">PRODUCT&nbsp;·&nbsp;STRATEGY&nbsp;·&nbsp;DESIGN</p>
-          <h1 class="hero-title">I build products people&nbsp;actually want to&nbsp;use.</h1>
+        <div class="hero-copy" data-reveal>
+          <p class="eyebrow">Product · Strategy · Design</p>
+          <h1 class="hero-title">
+            I build products people <em>actually</em> want to use.
+          </h1>
           <p class="hero-sub">
             Strategy, design, and engineering for teams that ship. I help founders
             turn a rough idea into a focused product — and the messy middle into
-            something that works.
+            something that quietly works.
           </p>
           <div class="hero-actions">
-            <a href="#contact" class="btn btn-coral">Send a request</a>
-            <a href="mailto:bogoslavtsevm@gmail.com" class="btn btn-lime">Email me directly</a>
+            <a href="#contact" class="btn btn-primary">Send a request</a>
+            <a href="#work" class="btn btn-ghost">See selected work</a>
           </div>
         </div>
 
-        <aside class="hero-card" aria-label="Profile">
-          <div class="avatar" aria-hidden="true">MB</div>
-          <h2 class="card-name">Mikhail Bogoslavtsev</h2>
-          <p class="card-bio">
-            Product builder working across strategy, design, and code.
-            Currently building at TraceAir. Previously: a few things that taught me a lot.
+        <aside class="hero-portrait" data-reveal aria-label="Profile">
+          <div class="portrait-frame">
+            <div class="avatar" aria-hidden="true">MB</div>
+          </div>
+          <p class="portrait-caption">
+            <span class="dot" aria-hidden="true"></span>
+            Available for select projects
           </p>
         </aside>
       </div>
     </section>
 
-    <section id="about" class="section">
+    <!-- What I do -->
+    <section class="section services" aria-label="What I do">
       <div class="container">
-        <p class="kicker">About</p>
-        <div class="about-grid">
-          <h2 class="big-statement">
-            I move between the whiteboard, the codebase, and the customer call — and
-            I like it there.
+        <ol class="service-list">
+          <li data-reveal>
+            <span class="service-num">01</span>
+            <h3>Product strategy</h3>
+            <p>From a fuzzy idea to a focused roadmap you can actually build against.</p>
+          </li>
+          <li data-reveal>
+            <span class="service-num">02</span>
+            <h3>Design</h3>
+            <p>Interfaces that feel obvious — calm, clear, and quietly considered.</p>
+          </li>
+          <li data-reveal>
+            <span class="service-num">03</span>
+            <h3>Engineering</h3>
+            <p>Shipped and maintainable. Real software, not a prototype that rots.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section section-sage">
+      <div class="container about-grid">
+        <div data-reveal>
+          <p class="kicker">About</p>
+          <h2 class="statement">
+            I move between the whiteboard, the codebase, and the customer call —
+            and I&nbsp;like it there.
           </h2>
-          <ul class="stat-list" aria-label="At a glance">
-            <li><span class="stat-num">10+</span><span class="stat-label">years building</span></li>
-            <li><span class="stat-num">0&nbsp;→&nbsp;1</span><span class="stat-label">my favourite range</span></li>
-            <li><span class="stat-num">1</span><span class="stat-label">project at a time</span></li>
+        </div>
+        <div class="about-body" data-reveal>
+          <p>
+            My background spans product, engineering, and design, which means I'm
+            comfortable holding the whole picture: what to build, why it matters,
+            and how to make it real without losing the plot.
+          </p>
+          <ul class="stat-row">
+            <li><strong>10+</strong><span>years building</span></li>
+            <li><strong>0&nbsp;→&nbsp;1</strong><span>my favourite range</span></li>
+            <li><strong>1</strong><span>project at a time</span></li>
           </ul>
         </div>
       </div>
     </section>
 
+    <!-- Work -->
     <section id="work" class="section">
       <div class="container">
-        <p class="kicker">Selected work</p>
+        <p class="kicker" data-reveal>Selected work</p>
         <div class="cards">
-          <article class="card">
+          <article class="card" data-reveal>
             <span class="card-tag">Product · 2025</span>
             <h3>Project One</h3>
             <p>A short, honest description of what you shipped and why it mattered. Swap this copy and the link for your real work.</p>
+            <a class="card-link" href="#">View case →</a>
           </article>
-          <article class="card">
+          <article class="card" data-reveal>
             <span class="card-tag">Engineering · 2024</span>
             <h3>Project Two</h3>
             <p>Another concise case. Lead with the outcome, then the role you played, then the craft.</p>
+            <a class="card-link" href="#">View case →</a>
           </article>
-          <article class="card">
+          <article class="card" data-reveal>
             <span class="card-tag">Design · 2023</span>
             <h3>Project Three</h3>
             <p>A third placeholder. Three cards read well on most screens — add more only when you have more to say.</p>
+            <a class="card-link" href="#">View case →</a>
           </article>
         </div>
       </div>
     </section>
 
+    <!-- Contact -->
     <section id="contact" class="section section-contact">
       <div class="container contact-wrap">
-        <div class="contact-copy">
+        <div class="contact-copy" data-reveal>
           <p class="kicker">Contact</p>
-          <h2 class="big-statement">Have a project in mind? Tell me about it.</h2>
+          <h2 class="statement">Have a project in mind? Tell me about it.</h2>
           <p class="lead">
-            What you're working on, what you've tried, where you're stuck. I read
-            every message and usually reply within 1–2 business days.
+            What you're working on, what you've tried, and where you're stuck.
+            I read every message and usually reply within 1–2 business days.
           </p>
         </div>
 
-        <form id="contact-form" class="contact-form" novalidate>
+        <form id="contact-form" class="contact-form" data-reveal novalidate>
           <input type="hidden" name="access_key" value="d2994d38-9323-4750-acb9-b10bfd6e2715" />
           <input type="hidden" name="subject" value="New request from portfolio site" />
           <input type="hidden" name="from_name" value="mikhailbogoslavtsev.github.io" />
@@ -142,7 +182,7 @@
             <small class="hint"><span id="char-count">0</span> / 3000</small>
           </div>
 
-          <button type="submit" class="btn btn-coral btn-block" id="submit-btn">
+          <button type="submit" class="btn btn-primary btn-block" id="submit-btn">
             <span class="btn-label">Send request</span>
             <span class="btn-spinner" aria-hidden="true"></span>
           </button>
