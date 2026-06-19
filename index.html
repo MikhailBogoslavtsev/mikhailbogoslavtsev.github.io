@@ -9,24 +9,32 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="preconnect" href="https://api.web3forms.com" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23C5572E'/%3E%3Ctext x='50%25' y='57%25' text-anchor='middle' font-family='Georgia,serif' font-size='30' font-weight='600' fill='%23FAF6F0'%3EMB%3C/text%3E%3C/svg%3E" />
   <link rel="stylesheet" href="styles.css" />
+  <!-- Sync: flag motion-capable sessions so we can pre-hide reveal targets without FOUC.
+       If JS/GSAP later fails, script.js removes this class and everything shows. -->
+  <script>
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.classList.add('anim-ready');
+    }
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
+  <div class="cursor" aria-hidden="true"></div>
 
   <header class="site-header">
     <div class="container header-inner">
-      <a href="#top" class="brand" aria-label="Home">
+      <a href="#top" class="brand" data-cursor aria-label="Home">
         <span class="brand-mark" aria-hidden="true">MB</span>
         <span class="brand-name">Mikhail Bogoslavtsev</span>
       </a>
       <nav class="nav" aria-label="Primary">
-        <a href="#about">About</a>
-        <a href="#work">Work</a>
-        <a href="#contact" class="nav-cta">Get in touch</a>
+        <a href="#about" data-cursor>About</a>
+        <a href="#work" data-cursor>Work</a>
+        <a href="#contact" class="nav-cta" data-cursor>Get in touch</a>
       </nav>
     </div>
   </header>
@@ -35,24 +43,26 @@
     <!-- Hero -->
     <section id="top" class="hero">
       <div class="container hero-grid">
-        <div class="hero-copy" data-reveal>
-          <p class="eyebrow">Product · Strategy · Design</p>
+        <div class="hero-copy">
+          <p class="eyebrow" data-hero>Product · Strategy · Design</p>
           <h1 class="hero-title">
-            I build products people <em>actually</em> want to use.
+            <span class="line"><span class="w"><span>I</span></span> <span class="w"><span>build</span></span> <span class="w"><span>products</span></span></span>
+            <span class="line"><span class="w"><span>people</span></span> <span class="w"><span><em>actually</em></span></span></span>
+            <span class="line"><span class="w"><span>want</span></span> <span class="w"><span>to</span></span> <span class="w"><span>use.</span></span></span>
           </h1>
-          <p class="hero-sub">
+          <p class="hero-sub" data-hero>
             Strategy, design, and engineering for teams that ship. I help founders
             turn a rough idea into a focused product — and the messy middle into
             something that quietly works.
           </p>
-          <div class="hero-actions">
-            <a href="#contact" class="btn btn-primary">Send a request</a>
-            <a href="#work" class="btn btn-ghost">See selected work</a>
+          <div class="hero-actions" data-hero>
+            <a href="#contact" class="btn btn-primary" data-cursor>Send a request</a>
+            <a href="#work" class="btn btn-ghost" data-cursor>See selected work</a>
           </div>
         </div>
 
-        <aside class="hero-portrait" data-reveal aria-label="Profile">
-          <div class="portrait-frame">
+        <aside class="hero-portrait" data-hero aria-label="Profile">
+          <div class="portrait-frame" data-parallax>
             <div class="avatar" aria-hidden="true">MB</div>
           </div>
           <p class="portrait-caption">
@@ -61,7 +71,26 @@
           </p>
         </aside>
       </div>
+
+      <div class="scroll-cue" data-hero aria-hidden="true">
+        <span>Scroll</span>
+        <span class="scroll-cue-line"></span>
+      </div>
     </section>
+
+    <!-- Kinetic marquee -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Product strategy</span><span class="sep">✦</span>
+        <span>Interface design</span><span class="sep">✦</span>
+        <span>Engineering</span><span class="sep">✦</span>
+        <span>Zero to one</span><span class="sep">✦</span>
+        <span>Product strategy</span><span class="sep">✦</span>
+        <span>Interface design</span><span class="sep">✦</span>
+        <span>Engineering</span><span class="sep">✦</span>
+        <span>Zero to one</span><span class="sep">✦</span>
+      </div>
+    </div>
 
     <!-- What I do -->
     <section class="section services" aria-label="What I do">
@@ -111,30 +140,36 @@
       </div>
     </section>
 
-    <!-- Work -->
-    <section id="work" class="section">
-      <div class="container">
-        <p class="kicker" data-reveal>Selected work</p>
-        <div class="cards">
-          <article class="card" data-reveal>
-            <span class="card-tag">Product · 2025</span>
-            <h3>Project One</h3>
-            <p>A short, honest description of what you shipped and why it mattered. Swap this copy and the link for your real work.</p>
-            <a class="card-link" href="#">View case →</a>
-          </article>
-          <article class="card" data-reveal>
-            <span class="card-tag">Engineering · 2024</span>
-            <h3>Project Two</h3>
-            <p>Another concise case. Lead with the outcome, then the role you played, then the craft.</p>
-            <a class="card-link" href="#">View case →</a>
-          </article>
-          <article class="card" data-reveal>
-            <span class="card-tag">Design · 2023</span>
-            <h3>Project Three</h3>
-            <p>A third placeholder. Three cards read well on most screens — add more only when you have more to say.</p>
-            <a class="card-link" href="#">View case →</a>
-          </article>
-        </div>
+    <!-- Work (horizontal pinned gallery on desktop, grid on mobile) -->
+    <section id="work" class="work-pin">
+      <div class="container work-head" data-reveal>
+        <p class="kicker">Selected work</p>
+        <h2 class="statement">A few things I'm proud of.</h2>
+      </div>
+      <div class="work-track">
+        <article class="card work-card">
+          <span class="card-tag">Product · 2025</span>
+          <h3>Project One</h3>
+          <p>A short, honest description of what you shipped and why it mattered. Swap this copy and the link for your real work.</p>
+          <a class="card-link" href="#" data-cursor>View case →</a>
+        </article>
+        <article class="card work-card">
+          <span class="card-tag">Engineering · 2024</span>
+          <h3>Project Two</h3>
+          <p>Another concise case. Lead with the outcome, then the role you played, then the craft.</p>
+          <a class="card-link" href="#" data-cursor>View case →</a>
+        </article>
+        <article class="card work-card">
+          <span class="card-tag">Design · 2023</span>
+          <h3>Project Three</h3>
+          <p>A third placeholder. Lead with outcomes — add more cards only when you have more to say.</p>
+          <a class="card-link" href="#" data-cursor>View case →</a>
+        </article>
+        <article class="card work-card work-card-cta">
+          <h3>Your project next?</h3>
+          <p>If your thing belongs in this row, let's talk about it.</p>
+          <a class="card-link" href="#contact" data-cursor>Send a request →</a>
+        </article>
       </div>
     </section>
 
@@ -182,7 +217,7 @@
             <small class="hint"><span id="char-count">0</span> / 3000</small>
           </div>
 
-          <button type="submit" class="btn btn-primary btn-block" id="submit-btn">
+          <button type="submit" class="btn btn-primary btn-block" id="submit-btn" data-cursor>
             <span class="btn-label">Send request</span>
             <span class="btn-spinner" aria-hidden="true"></span>
           </button>
@@ -203,6 +238,11 @@
     </div>
   </footer>
 
-  <script src="script.js" defer></script>
+  <!-- Motion stack: GSAP + ScrollTrigger + Lenis smooth scroll (CDN). Deferred, order-preserved.
+       script.js degrades gracefully if any of these fail to load. -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script defer src="script.js"></script>
 </body>
 </html>
