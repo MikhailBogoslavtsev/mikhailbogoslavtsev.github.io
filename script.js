@@ -167,23 +167,4 @@
     window.addEventListener('load', () => ST.refresh());
   }
 
-  /* ---------------- Custom cursor (fine pointer only) ---------------- */
-  if (window.matchMedia('(pointer: fine)').matches) {
-    const cursor = document.querySelector('.cursor');
-    if (cursor) {
-      root.classList.add('has-cursor');
-      const xTo = gsap.quickTo(cursor, 'x', { duration: 0.25, ease: 'power3' });
-      const yTo = gsap.quickTo(cursor, 'y', { duration: 0.25, ease: 'power3' });
-      let shown = false;
-      window.addEventListener('mousemove', (e) => {
-        if (!shown) { cursor.classList.add('is-active'); shown = true; }
-        xTo(e.clientX); yTo(e.clientY);
-      });
-      document.addEventListener('mouseleave', () => cursor.classList.remove('is-active'));
-      document.querySelectorAll('a, button, [data-cursor]').forEach((el) => {
-        el.addEventListener('mouseenter', () => cursor.classList.add('is-hover'));
-        el.addEventListener('mouseleave', () => cursor.classList.remove('is-hover'));
-      });
-    }
-  }
 })();

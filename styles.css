@@ -62,22 +62,6 @@ h1, h2, h3 { color: var(--ink); }
 .anim-ready .hero-title .w > span,
 .anim-ready [data-hero] { opacity: 0; }
 
-/* ---------- Custom cursor (pointer devices only; enabled via JS) ---------- */
-.cursor { display: none; }
-.has-cursor .cursor {
-  display: block; position: fixed; top: 0; left: 0; z-index: 90;
-  width: 34px; height: 34px; margin: -17px 0 0 -17px; border-radius: 50%;
-  border: 1.5px solid var(--terracotta);
-  pointer-events: none; mix-blend-mode: normal;
-  transition: width .22s ease, height .22s ease, margin .22s ease, background .22s ease, opacity .22s ease;
-  opacity: 0;
-}
-.has-cursor .cursor.is-active { opacity: 1; }
-.has-cursor .cursor.is-hover {
-  width: 60px; height: 60px; margin: -30px 0 0 -30px;
-  background: var(--terracotta-tint);
-}
-.has-cursor.has-cursor * { cursor: none; }
 
 /* ---------- Header ---------- */
 .site-header {
@@ -325,5 +309,4 @@ h1, h2, h3 { color: var(--ink); }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .anim-ready [data-reveal], .anim-ready [data-hero], .anim-ready .hero-title .w > span { opacity: 1 !important; transform: none !important; }
   .marquee-track { animation: none !important; }
-  .has-cursor .cursor { display: none !important; }
 }
