@@ -3,32 +3,16 @@
 
   const root = document.documentElement;
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const hasGSAP = typeof window.gsap !== 'undefined';
-  const ST = window.ScrollTrigger;
-  const animate = hasGSAP && !prefersReduced;
 
-  // Failsafe: if we flagged the page for motion but GSAP didn't load (or motion is off),
-  // drop the pre-hide class so nothing is ever stuck invisible.
-  if (!animate) root.classList.remove('anim-ready');
-
-  /* ---------------- Contact form (always runs, no deps) ---------------- */
+  /* ---------------- Contact form ---------------- */
   const form = document.getElementById('contact-form');
+  const successCard = document.getElementById('form-success');
   const status = document.getElementById('form-status');
   const submitBtn = document.getElementById('submit-btn');
-  const message = document.getElementById('message');
-  const charCount = document.getElementById('char-count');
-  const yearEl = document.getElementById('year');
 
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
-
+  // Timing honeypot: ignore submissions that arrive implausibly fast (bots).
   const renderedAt = Date.now();
   const MIN_FILL_MS = 3000;
-
-  if (message && charCount) {
-    const updateCount = () => { charCount.textContent = String(message.value.length); };
-    message.addEventListener('input', updateCount);
-    updateCount();
-  }
 
   const setStatus = (text, kind) => {
     if (!status) return;
@@ -45,15 +29,31 @@
     if (label) label.textContent = loading ? 'Sending…' : 'Send';
   };
 
+  const showSuccess = () => {
+    if (form) form.hidden = true;
+    if (successCard) {
+      successCard.hidden = false;
+      successCard.setAttribute('tabindex', '-1');
+      successCard.focus({ preventScroll: true });
+    }
+  };
+
   if (form) {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       setStatus('', null);
 
       const hp = form.elements.namedItem('botcheck');
-      if (hp && hp.checked) { setStatus('Thanks — your message has been sent.', 'success'); form.reset(); return; }
-      if (Date.now() - renderedAt < MIN_FILL_MS) { setStatus('Please take a moment to review your message before sending.', 'error'); return; }
-      if (!form.checkValidity()) { form.reportValidity(); setStatus('Please fill in the required fields.', 'error'); return; }
+      if (hp && hp.checked) { showSuccess(); return; }
+      if (Date.now() - renderedAt < MIN_FILL_MS) {
+        setStatus('Please take a moment to review your message before sending.', 'error');
+        return;
+      }
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        setStatus('Please fill in the required fields.', 'error');
+        return;
+      }
 
       setLoading(true);
       const payload = Object.fromEntries(new FormData(form).entries());
@@ -66,12 +66,10 @@
         });
         const json = await res.json().catch(() => ({}));
         if (res.ok && json.success) {
-          setStatus('Thanks — your request is on its way. I’ll be in touch soon.', 'success');
-          form.reset();
-          if (charCount) charCount.textContent = '0';
+          showSuccess();
         } else {
           const reason = json && json.message ? json.message : 'Something went wrong on our end.';
-          setStatus(`Couldn’t send: ${reason} Try again in a moment, or email me directly.`, 'error');
+          setStatus(`Couldn’t send: ${reason} Please try again in a moment.`, 'error');
         }
       } catch (err) {
         setStatus('Network error — check your connection and try again.', 'error');
@@ -81,67 +79,24 @@
     });
   }
 
-  /* ---------------- Motion (only when GSAP present & motion allowed) ---------------- */
-  if (!animate) return;
+  /* ---------------- Scroll reveals (progressive enhancement) ---------------- */
+  // index.html adds `.anim-ready` to <html> only when motion is allowed, which
+  // pre-hides reveal targets. If we bail here, reveal everything so nothing sticks.
+  const revealEls = document.querySelectorAll('[data-reveal], [data-hero]');
 
-  const gsap = window.gsap;
-  if (ST) gsap.registerPlugin(ST);
+  if (prefersReduced || !('IntersectionObserver' in window)) {
+    root.classList.remove('anim-ready');
+    return;
+  }
 
-  // Smooth scroll (Lenis) wired into GSAP's ticker + ScrollTrigger.
-  let lenis = null;
-  if (typeof window.Lenis !== 'undefined') {
-    lenis = new window.Lenis({ lerp: 0.1, wheelMultiplier: 1, smoothWheel: true });
-    lenis.on('scroll', () => { if (ST) ST.update(); });
-    gsap.ticker.add((time) => lenis.raf(time * 1000));
-    gsap.ticker.lagSmoothing(0);
-
-    // Make in-page anchor links use Lenis for a smooth glide.
-    document.querySelectorAll('a[href^="#"]').forEach((a) => {
-      a.addEventListener('click', (e) => {
-        const id = a.getAttribute('href');
-        if (id.length > 1) {
-          const target = document.querySelector(id);
-          if (target) { e.preventDefault(); lenis.scrollTo(target, { offset: -74 }); }
-        }
-      });
+  const io = new IntersectionObserver((entries, obs) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-in');
+        obs.unobserve(entry.target);
+      }
     });
-  }
+  }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
 
-  // Hero intro timeline (kinetic words + staggered supporting elements).
-  const heroWords = gsap.utils.toArray('.hero-title .w > span');
-  const heroBits = gsap.utils.toArray('[data-hero]');
-  const introTL = gsap.timeline({ defaults: { ease: 'power3.out' } });
-  if (heroWords.length) {
-    introTL.from(heroWords, { yPercent: 110, duration: 0.9, stagger: 0.06 });
-  }
-  if (heroBits.length) {
-    introTL.to(heroBits, { opacity: 1, y: 0, duration: 0.7, stagger: 0.08 }, '-=0.5')
-           .from(heroBits, { y: 16, duration: 0.7, stagger: 0.08 }, '<');
-  }
-
-  // Scroll reveals for the rest of the page.
-  if (ST) {
-    gsap.utils.toArray('[data-reveal]').forEach((el) => {
-      gsap.fromTo(el, { opacity: 0, y: 26 }, {
-        opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
-        scrollTrigger: { trigger: el, start: 'top 85%' },
-      });
-    });
-
-    // Subtle portrait parallax.
-    const portrait = document.querySelector('[data-parallax]');
-    if (portrait) {
-      gsap.to(portrait, {
-        yPercent: -8, ease: 'none',
-        scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true },
-      });
-    }
-
-    // Recalculate once webfonts settle (Fraunces changes element widths).
-    if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(() => ST.refresh());
-    }
-    window.addEventListener('load', () => ST.refresh());
-  }
-
+  revealEls.forEach((el) => io.observe(el));
 })();
