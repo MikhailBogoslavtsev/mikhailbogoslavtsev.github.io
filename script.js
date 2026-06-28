@@ -42,7 +42,7 @@
     submitBtn.disabled = loading;
     submitBtn.classList.toggle('is-loading', loading);
     const label = submitBtn.querySelector('.btn-label');
-    if (label) label.textContent = loading ? 'Sending…' : 'Send request';
+    if (label) label.textContent = loading ? 'Sending…' : 'Send';
   };
 
   if (form) {
@@ -134,29 +134,6 @@
       gsap.to(portrait, {
         yPercent: -8, ease: 'none',
         scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true },
-      });
-    }
-
-    // Pinned horizontal work gallery (desktop, fine pointer, wide enough).
-    const workPin = document.querySelector('.work-pin');
-    const track = document.querySelector('.work-track');
-    const canHorizontal = window.matchMedia('(min-width: 881px) and (pointer: fine)').matches;
-
-    if (workPin && track && canHorizontal) {
-      workPin.classList.add('is-horizontal');
-      const amount = () => Math.max(0, track.scrollWidth - window.innerWidth + 56);
-      gsap.to(track, {
-        x: () => -amount(),
-        ease: 'none',
-        scrollTrigger: {
-          trigger: workPin,
-          start: 'top top',
-          end: () => '+=' + amount(),
-          pin: true,
-          scrub: 1,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
-        },
       });
     }
 

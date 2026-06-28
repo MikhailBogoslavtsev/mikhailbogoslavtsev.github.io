@@ -130,16 +130,20 @@ h1, h2, h3 { color: var(--ink); }
 .hero-title {
   margin: 0 0 26px;
   font-family: var(--serif); font-weight: 500;
-  font-size: clamp(42px, 7vw, 84px);
-  line-height: 1.0; letter-spacing: -0.025em;
+  font-size: clamp(30px, 4.4vw, 56px);
+  line-height: 1.08; letter-spacing: -0.02em;
 }
 .hero-title .line { display: block; }
 .hero-title .w { display: inline-block; overflow: hidden; vertical-align: top; }
 .hero-title .w > span { display: inline-block; will-change: transform; }
 .hero-title em { font-style: italic; color: var(--terracotta); }
 .hero-sub {
-  margin: 0 0 34px; max-width: 500px;
+  margin: 0 0 16px; max-width: 540px;
   font-size: clamp(17px, 2vw, 19px); color: var(--ink-soft);
+}
+.hero-support {
+  margin: 0 0 34px; max-width: 500px;
+  font-size: 15px; color: var(--muted);
 }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
 
@@ -209,41 +213,46 @@ h1, h2, h3 { color: var(--ink); }
   font-size: clamp(25px, 3.6vw, 40px); line-height: 1.15; letter-spacing: -0.015em;
   text-wrap: balance;
 }
-.lead { font-size: 18px; color: var(--ink-soft); max-width: 480px; }
+.lead { font-size: 18px; color: var(--ink-soft); max-width: 540px; }
 
-/* What I do */
-.services { padding-top: clamp(40px, 5vw, 64px); }
-.service-list {
-  list-style: none; margin: 0; padding: 0;
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
-  border-top: 1px solid var(--line);
+/* Shared section intro block (kicker + statement + lead) */
+.section-head { max-width: 680px; margin: 0 0 clamp(34px, 5vw, 56px); }
+.section-head .kicker { margin-bottom: 14px; }
+.section-head .lead { margin: 18px 0 0; }
+
+/* ---------- How I help ---------- */
+.help-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; align-items: stretch; }
+.help-grid .card h3 { font-size: 20px; line-height: 1.25; }
+.help-cta { margin: 32px 0 0; }
+.help-cta .card-link { font-size: 16px; }
+@media (max-width: 860px) { .help-grid { grid-template-columns: 1fr; } }
+
+/* ---------- About / how I lead ---------- */
+.about-prose { max-width: 720px; }
+.about-prose p { margin: 0 0 22px; font-size: 18px; color: var(--ink-soft); }
+.about-prose .about-lead-in { margin-bottom: 16px; color: var(--ink); font-weight: 600; }
+.principles { list-style: none; margin: 0 0 22px; padding: 0; display: grid; gap: 18px; }
+.principles li { font-size: 17px; color: var(--ink-soft); padding-left: 18px; border-left: 2px solid var(--terracotta-tint); }
+.principles strong { color: var(--ink); }
+
+/* ---------- Background timeline ---------- */
+.timeline { list-style: none; margin: 0; padding: 0; }
+.timeline li { padding: 22px 0; border-top: 1px solid var(--line); font-size: 16px; color: var(--ink-soft); }
+.timeline li:last-child { border-bottom: 1px solid var(--line); }
+.timeline strong { color: var(--ink); }
+.muted-line { margin: 24px 0 0; font-size: 14px; color: var(--muted); }
+
+/* ---------- Selected work ---------- */
+.work-list { display: grid; }
+.work-entry { padding: clamp(26px, 4vw, 36px) 0; border-top: 1px solid var(--line-strong); }
+.work-entry:last-child { border-bottom: 1px solid var(--line-strong); }
+.work-entry h3 {
+  margin: 0 0 8px; font-family: var(--serif); font-weight: 500;
+  font-size: clamp(20px, 2.4vw, 27px); line-height: 1.2; letter-spacing: -0.015em;
+  max-width: 760px;
 }
-.service-list li { padding: 30px 28px 30px 0; border-bottom: 1px solid var(--line); }
-.service-num { font-family: var(--serif); font-size: 15px; color: var(--terracotta); }
-.service-list h3 { margin: 10px 0 8px; font-size: 19px; font-weight: 600; letter-spacing: -0.01em; }
-.service-list p { margin: 0; font-size: 15px; color: var(--ink-soft); }
-@media (max-width: 760px) {
-  .service-list { grid-template-columns: 1fr; }
-  .service-list li { padding-right: 0; }
-}
-
-/* About */
-.about-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(28px, 5vw, 64px); align-items: start; }
-.about-grid .statement { max-width: 520px; }
-.about-body p { margin: 0 0 28px; font-size: 18px; color: var(--ink-soft); }
-.stat-row { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
-.stat-row li { display: flex; align-items: baseline; gap: 16px; padding: 16px 0; border-top: 1px solid var(--line-strong); }
-.stat-row li:last-child { border-bottom: 1px solid var(--line-strong); }
-.stat-row strong { font-family: var(--serif); font-weight: 500; font-size: 24px; color: var(--ink); min-width: 84px; }
-.stat-row span { color: var(--muted); font-size: 15px; }
-@media (max-width: 760px) { .about-grid { grid-template-columns: 1fr; } }
-
-/* ---------- Work ---------- */
-.work-pin { padding: clamp(56px, 8vw, 100px) 0; overflow: hidden; }
-.work-head { margin-bottom: 40px; }
-.work-track { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
-.work-track > .container, .work-head { } /* head uses container; track is full-bleed-ish below */
-.work-pin .work-track { max-width: var(--container); padding: 0 28px; margin: 0 auto; }
+.work-context { margin: 0 0 14px; font-size: 14px; font-weight: 600; color: var(--sage); }
+.work-entry > p:not(.work-context) { margin: 0; max-width: 760px; color: var(--ink-soft); }
 
 .card {
   background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
@@ -257,20 +266,6 @@ h1, h2, h3 { color: var(--ink); }
 .card p { margin: 0; color: var(--ink-soft); font-size: 15px; flex: 1; }
 .card-link { margin-top: 8px; font-weight: 600; font-size: 15px; color: var(--terracotta); }
 .card-link:hover { color: var(--terracotta-deep); }
-.work-card-cta { background: var(--ink); border-color: var(--ink); }
-.work-card-cta h3, .work-card-cta p { color: var(--cream); }
-.work-card-cta p { opacity: 0.8; }
-.work-card-cta .card-link { color: var(--cream); }
-
-/* Horizontal pinned mode — enabled by JS on capable desktops */
-.work-pin.is-horizontal { height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 0; }
-.work-pin.is-horizontal .work-head { margin: 0 auto 36px; }
-.work-pin.is-horizontal .work-track {
-  display: flex; flex-wrap: nowrap; max-width: none; margin: 0;
-  padding: 0 max(28px, calc((100vw - var(--container)) / 2 + 28px)); gap: 28px;
-}
-.work-pin.is-horizontal .work-card { flex: 0 0 auto; width: min(380px, 78vw); }
-@media (max-width: 880px) { .work-track { grid-template-columns: 1fr; } }
 
 /* ---------- Reviews (ADPList) ---------- */
 .section-reviews { background: var(--sage-tint); border-top: 1px solid var(--line); }
@@ -294,16 +289,23 @@ h1, h2, h3 { color: var(--ink); }
 .contact-form { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 30px; box-shadow: var(--shadow-md); display: grid; gap: 18px; }
 .field { display: grid; gap: 7px; }
 .field label { font-size: 14px; font-weight: 600; color: var(--ink); }
-.field input, .field textarea {
+.field input, .field textarea, .field select {
   width: 100%; background: var(--cream); color: var(--ink);
   border: 1px solid var(--line-strong); border-radius: var(--radius-sm);
   padding: 13px 15px; font: inherit; font-size: 15px;
   transition: border-color 140ms ease, box-shadow 140ms ease, background 140ms ease;
 }
 .field input::placeholder, .field textarea::placeholder { color: #b3ada4; }
-.field input:focus, .field textarea:focus { outline: none; background: var(--surface); border-color: var(--terracotta); box-shadow: 0 0 0 3px var(--terracotta-tint); }
+.field input:focus, .field textarea:focus, .field select:focus { outline: none; background: var(--surface); border-color: var(--terracotta); box-shadow: 0 0 0 3px var(--terracotta-tint); }
 .field textarea { resize: vertical; min-height: 130px; }
 .field input:invalid:not(:placeholder-shown), .field textarea:invalid:not(:placeholder-shown) { border-color: var(--terracotta-deep); }
+/* Native select: strip default chrome, draw our own caret. */
+.field select {
+  appearance: none; -webkit-appearance: none; cursor: pointer; padding-right: 40px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='none' stroke='%238a847c' stroke-width='1.6'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 15px center; background-size: 12px;
+}
+.field select:required:invalid { color: #b3ada4; }
 .hint { color: var(--muted); font-size: 12.5px; }
 
 .hp-field { position: absolute !important; left: -9999px !important; width: 1px !important; height: 1px !important; opacity: 0 !important; pointer-events: none !important; }
