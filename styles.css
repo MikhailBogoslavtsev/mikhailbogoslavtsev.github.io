@@ -272,6 +272,22 @@ h1, h2, h3 { color: var(--ink); }
 .work-pin.is-horizontal .work-card { flex: 0 0 auto; width: min(380px, 78vw); }
 @media (max-width: 880px) { .work-track { grid-template-columns: 1fr; } }
 
+/* ---------- Reviews (ADPList) ---------- */
+.section-reviews { background: var(--sage-tint); border-top: 1px solid var(--line); }
+.reviews-wrap { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(28px, 5vw, 64px); align-items: center; }
+.reviews-copy .lead { margin: 0 0 26px; }
+.reviews-embed {
+  width: 100%; max-width: 650px; height: 496px; margin-left: auto;
+  padding: 16px; background: var(--surface);
+  border: 1px solid var(--line); border-radius: var(--radius);
+  box-shadow: var(--shadow-md); overflow: hidden;
+}
+.reviews-embed iframe { display: block; width: 100%; height: 100%; border: 0; border-radius: var(--radius-sm); }
+@media (max-width: 840px) {
+  .reviews-wrap { grid-template-columns: 1fr; }
+  .reviews-embed { max-width: none; margin-left: 0; height: 540px; }
+}
+
 /* ---------- Contact ---------- */
 .section-contact { border-top: 1px solid var(--line); }
 .contact-wrap { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: clamp(28px, 5vw, 64px); align-items: start; }

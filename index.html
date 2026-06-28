@@ -33,6 +33,7 @@
       <nav class="nav" aria-label="Primary">
         <a href="#about" data-cursor>About</a>
         <a href="#work" data-cursor>Work</a>
+        <a href="#reviews" data-cursor>Reviews</a>
         <a href="#contact" class="nav-cta" data-cursor>Get in touch</a>
       </nav>
     </div>
@@ -169,6 +170,37 @@
           <p>If your thing belongs in this row, let's talk about it.</p>
           <a class="card-link" href="#contact" data-cursor>Send a request →</a>
         </article>
+      </div>
+    </section>
+
+    <!-- Reviews (ADPList mentorship widget) -->
+    <section id="reviews" class="section section-reviews">
+      <div class="container reviews-wrap">
+        <div class="reviews-copy" data-reveal>
+          <p class="kicker">Mentorship</p>
+          <h2 class="statement">What people say after working with me.</h2>
+          <p class="lead">
+            I mentor product builders and founders on ADPList. These are
+            unedited reviews, pulled live from my profile.
+          </p>
+          <a
+            href="https://adplist.org/mentors/mikhail-bogoslavtsev"
+            class="btn btn-ghost"
+            data-cursor
+            target="_blank"
+            rel="noopener noreferrer"
+          >Book a session ↗</a>
+        </div>
+
+        <!-- ADPList reviews widget. Card frame comes from .reviews-embed (design tokens),
+             not the vendor's inline styles. loading="lazy" keeps it off the critical path. -->
+        <div class="reviews-embed" data-reveal>
+          <iframe
+            src="https://adplist.org/widgets/reviews?src=mikhail-bogoslavtsev"
+            title="ADPList reviews for Mikhail Bogoslavtsev"
+            loading="lazy"
+          ></iframe>
+        </div>
       </div>
     </section>
 
