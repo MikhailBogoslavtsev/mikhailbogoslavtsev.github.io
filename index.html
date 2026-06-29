@@ -1,284 +1,430 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Mikhail Bogoslavtsev — product leadership that turns messy, high-stakes problems into software people actually use. Available full-time, as a fractional Head of Product, or as a mentor. Start a conversation." />
-  <meta name="theme-color" content="#FFFFFF" />
-  <title>Mikhail Bogoslavtsev — Product Leadership</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mikhail Bogoslavtsev — Product Leadership</title>
+<meta name="description" content="Product leadership that turns messy, high-stakes problems into software people actually use. Full-time, fractional, or mentor.">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://api.web3forms.com">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23E5484D'/%3E%3Ctext x='50%25' y='57%25' text-anchor='middle' font-family='Georgia,serif' font-size='30' font-weight='500' fill='%23FFFFFF'%3EMB%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#FFFFFF;
+    --tint:color-mix(in srgb, #E5484D 3%, #FFFFFF);
+    --ink:#17120D;
+    --body:#3A352C;
+    --muted:#7C7264;
+    --line:#EBE5DB;
+    --accent:#E5484D;
+    --accent-hover:color-mix(in srgb, #E5484D 86%, #000);
+    --focus:color-mix(in srgb, #E5484D 16%, transparent);
+    --serif:'Newsreader', Georgia, serif;
+    --sans:'Hanken Grotesk', system-ui, -apple-system, sans-serif;
+    --maxw:1080px;
+    --pad:clamp(20px, 5vw, 56px);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:var(--sans);
+    background:var(--bg);
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  ::selection{background:var(--accent);color:#fff;}
+  a{color:inherit;}
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad);}
+  h1,h2,h3,h4{font-family:var(--serif);font-weight:500;letter-spacing:-0.005em;color:var(--ink);margin:0;}
+  p{margin:0;}
+  .eyebrow{font-family:var(--sans);text-transform:uppercase;letter-spacing:0.14em;font-size:.7rem;font-weight:600;color:var(--muted);}
+  .index{font-family:var(--sans);font-size:.82rem;font-weight:600;color:var(--accent);letter-spacing:.04em;}
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="preconnect" href="https://api.web3forms.com" />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23E5484D'/%3E%3Ctext x='50%25' y='57%25' text-anchor='middle' font-family='Georgia,serif' font-size='30' font-weight='500' fill='%23FFFFFF'%3EMB%3C/text%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="styles.css" />
-  <!-- Flag motion-capable sessions so reveal targets can be pre-hidden without FOUC.
-       If JS fails to run, script.js never executes and nothing is left hidden because
-       the pre-hide styles are scoped under .anim-ready, which we only add here. -->
-  <script>
-    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      document.documentElement.classList.add('anim-ready');
-    }
-  </script>
+  /* Skip link (a11y) */
+  .skip-link{position:absolute;left:-9999px;top:0;z-index:100;background:var(--ink);color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-size:.85rem;text-decoration:none;}
+  .skip-link:focus{left:0;}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb, var(--bg) 86%, transparent);backdrop-filter:saturate(180%) blur(14px);-webkit-backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--line);}
+  .nav-inner{height:66px;display:flex;align-items:center;justify-content:space-between;gap:14px;}
+  .wordmark{font-family:var(--serif);font-weight:500;font-size:1.05rem;letter-spacing:-0.005em;text-decoration:none;white-space:nowrap;}
+  .nav-links{display:flex;align-items:center;gap:clamp(12px,2.4vw,28px);flex-wrap:wrap;justify-content:flex-end;}
+  .nav-links a{font-size:.82rem;font-weight:500;color:var(--muted);text-decoration:none;white-space:nowrap;transition:color .15s;}
+  .nav-links a:hover{color:var(--accent);}
+  .nav-links a.contact{color:var(--accent);border-bottom:1px solid color-mix(in srgb,var(--accent) 40%,transparent);padding-bottom:1px;}
+
+  section{scroll-margin-top:84px;}
+  .sec-pad{padding-top:clamp(56px,9vw,116px);padding-bottom:clamp(56px,9vw,116px);}
+  .tinted{background:var(--tint);}
+  .sec-head{display:flex;align-items:baseline;gap:14px;}
+  .sec-head h2{font-size:clamp(1.5rem,3vw,2.25rem);}
+
+  /* HERO */
+  .hero{padding-top:clamp(44px,7vw,80px);padding-bottom:clamp(56px,9vw,104px);}
+  .hero-inner{display:flex;flex-wrap:wrap;gap:clamp(34px,5vw,68px);align-items:center;}
+  .hero-text{flex:1 1 440px;min-width:290px;}
+  .eyebrow-row{display:flex;align-items:center;gap:9px;margin-bottom:22px;}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);flex:0 0 auto;}
+  .hero h1{font-size:clamp(2.25rem,5.2vw,3.85rem);line-height:1.04;text-wrap:balance;}
+  .hero .lead{font-size:clamp(1.04rem,1.5vw,1.22rem);line-height:1.55;color:var(--body);margin-top:26px;max-width:42ch;}
+  .hero .support{font-size:.93rem;line-height:1.55;color:var(--muted);margin-top:18px;max-width:44ch;}
+  .hero-media{flex:0 0 auto;display:flex;justify-content:center;width:100%;max-width:340px;margin:0 auto;}
+  .headshot{width:300px;height:300px;border-radius:50%;object-fit:cover;border:1px solid var(--line);background:color-mix(in srgb,var(--accent) 4%, var(--bg));display:block;}
+
+  .btn{display:inline-flex;align-items:center;gap:9px;background:var(--accent);color:#fff;font-family:var(--sans);font-weight:600;font-size:.96rem;letter-spacing:.01em;text-decoration:none;padding:14px 26px;border-radius:9px;border:none;cursor:pointer;transition:background .15s;}
+  .btn:hover{background:var(--accent-hover);}
+  .btn:disabled{opacity:.7;cursor:progress;}
+  .textlink{display:inline-flex;align-items:center;gap:7px;font-family:var(--sans);font-weight:600;font-size:.95rem;color:var(--accent);text-decoration:none;transition:gap .15s;}
+  .textlink:hover{gap:11px;}
+
+  /* HOW I HELP */
+  .sec-intro{font-size:1.02rem;color:var(--muted);margin-top:14px;}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:clamp(16px,2.4vw,26px);margin-top:clamp(32px,4vw,48px);}
+  .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:clamp(24px,2.6vw,32px);display:flex;flex-direction:column;gap:13px;}
+  .card .bar{width:30px;height:3px;background:var(--accent);border-radius:2px;}
+  .card h3{font-size:1.17rem;line-height:1.3;}
+  .card p{font-size:.92rem;line-height:1.6;color:var(--body);}
+  .help-link{margin-top:clamp(26px,3vw,38px);display:inline-block;}
+
+  /* SELECTED WORK */
+  .work-note{font-size:1.02rem;line-height:1.55;color:var(--muted);margin-top:14px;margin-bottom:clamp(20px,3vw,34px);max-width:62ch;}
+  .entry{padding:clamp(28px,4vw,40px) 0;border-top:1px solid var(--line);}
+  .entry:last-child{border-bottom:1px solid var(--line);}
+  .entry h3{font-size:clamp(1.2rem,2vw,1.5rem);line-height:1.28;}
+  .entry .context{text-transform:uppercase;letter-spacing:0.14em;font-size:.7rem;font-weight:600;color:var(--muted);margin-top:12px;}
+  .entry p.body{font-size:.97rem;line-height:1.62;color:var(--body);margin-top:14px;max-width:64ch;}
+
+  /* ABOUT */
+  .about-intro{max-width:68ch;margin-top:clamp(24px,3vw,36px);display:flex;flex-direction:column;gap:20px;}
+  .about-intro p{font-size:1.06rem;line-height:1.68;color:var(--body);}
+  .beliefs-label{text-transform:uppercase;letter-spacing:0.14em;font-size:.72rem;font-weight:600;color:var(--muted);margin:clamp(36px,4vw,52px) 0 clamp(20px,2.4vw,28px);}
+  .beliefs{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(22px,3vw,40px);max-width:880px;}
+  .belief{border-top:2px solid var(--accent);padding-top:16px;}
+  .belief h4{font-size:1.12rem;margin-bottom:8px;}
+  .belief p{font-size:.95rem;line-height:1.62;color:var(--body);}
+  .about-close{font-size:1.06rem;line-height:1.68;color:var(--body);margin-top:clamp(32px,4vw,46px);max-width:68ch;}
+
+  /* BACKGROUND */
+  .timeline{border-left:1px solid var(--line);display:flex;flex-direction:column;gap:clamp(26px,3vw,38px);margin-top:clamp(28px,3.5vw,44px);max-width:760px;}
+  .tl-item{position:relative;padding-left:30px;}
+  .tl-item .tl-dot{position:absolute;left:-5px;top:7px;width:9px;height:9px;border-radius:50%;background:var(--accent);}
+  .tl-item h4{font-size:1.14rem;margin-bottom:7px;}
+  .tl-item p{font-size:.96rem;line-height:1.6;color:var(--body);}
+  .tl-note{font-size:.9rem;color:var(--muted);margin-top:clamp(24px,3vw,34px);padding-left:30px;}
+
+  /* CONTACT */
+  .contact-inner{display:flex;flex-wrap:wrap;gap:clamp(34px,5vw,72px);}
+  .contact-left{flex:1 1 320px;min-width:280px;}
+  .contact-left h2{font-size:clamp(1.6rem,3.2vw,2.45rem);}
+  .contact-left p{font-size:1.04rem;line-height:1.62;color:var(--body);margin-top:18px;max-width:44ch;}
+  .contact-form-col{flex:1 1 380px;min-width:290px;}
+  form{display:flex;flex-direction:column;gap:16px;}
+  .field{display:flex;flex-direction:column;gap:7px;}
+  .field label{text-transform:uppercase;letter-spacing:0.14em;font-size:.68rem;font-weight:600;color:var(--muted);}
+  .field input,.field select,.field textarea{font-family:var(--sans);font-size:.98rem;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:9px;padding:13px 14px;width:100%;}
+  .field textarea{line-height:1.5;resize:vertical;}
+  .field select{appearance:none;-webkit-appearance:none;cursor:pointer;padding-right:36px;background-image:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%2212%22 viewBox=%220 0 12 12%22><path d=%22M2 4l4 4 4-4%22 stroke=%22%237C7264%22 stroke-width=%221.4%22 fill=%22none%22 stroke-linecap=%22round%22/></svg>');background-repeat:no-repeat;background-position:right 14px center;}
+  .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--accent);outline:none;box-shadow:0 0 0 3px var(--focus);}
+  /* Honeypot — visually hidden, off the tab order. */
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;}
+  form button[type=submit]{align-self:flex-start;margin-top:4px;}
+  .form-status{font-size:.9rem;line-height:1.5;min-height:1.2em;}
+  .form-status.is-error{color:var(--accent);}
+  .form-status.is-success{color:var(--body);}
+  .success{display:none;border:1px solid var(--line);background:#fff;border-radius:14px;padding:clamp(28px,4vw,40px);}
+  .success.show{display:block;}
+  form.hide{display:none;}
+  .success .check{width:42px;height:42px;border-radius:50%;background:color-mix(in srgb,var(--accent) 14%,transparent);display:flex;align-items:center;justify-content:center;margin-bottom:16px;color:var(--accent);font-size:1.3rem;}
+  .success h3{font-size:1.4rem;margin-bottom:8px;}
+  .success p{font-size:1rem;line-height:1.6;color:var(--body);}
+
+  /* FOOTER */
+  footer{border-top:1px solid var(--line);padding:clamp(28px,4vw,40px) 0;}
+  .footer-inner{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;}
+  .footer-inner .colophon{font-size:.86rem;color:var(--muted);}
+  .footer-inner a{font-size:.82rem;font-weight:500;color:var(--muted);text-decoration:none;white-space:nowrap;transition:color .15s;}
+  .footer-inner a:hover{color:var(--accent);}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{transition:none !important;}
+  }
+</style>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- NAV -->
-  <header class="nav">
-    <div class="container nav-inner">
-      <a href="#top" class="wordmark">Mikhail Bogoslavtsev</a>
-      <nav class="nav-links" aria-label="Primary">
+  <a class="skip-link" href="#help">Skip to content</a>
+
+  <nav>
+    <div class="wrap nav-inner">
+      <a class="wordmark" href="#top">Mikhail Bogoslavtsev</a>
+      <div class="nav-links">
         <a href="#work">Work</a>
         <a href="#help">How I help</a>
         <a href="#about">About</a>
-        <a href="#contact" class="nav-contact">Contact</a>
-      </nav>
+        <a href="#contact" class="contact">Contact</a>
+      </div>
     </div>
-  </header>
+  </nav>
 
-  <main id="main">
-    <!-- HERO -->
-    <section id="top" class="hero">
-      <div class="container hero-inner">
-        <div class="hero-copy">
-          <p class="eyebrow" data-hero>
-            <span class="eyebrow-dot" aria-hidden="true"></span>
-            Product leadership · Fractional · Mentor
-          </p>
-          <h1 class="hero-title" data-hero>Product leadership that turns messy, high-stakes problems into software people actually use.</h1>
-          <p class="hero-sub" data-hero>13+ years in B2B SaaS — most recently building construction-tech products for some of the largest US homebuilders. I help founders ship the right thing, then build the team to keep shipping it.</p>
-          <p class="hero-support" data-hero>Full-time, fractional, or mentor. Based in Spain, working remotely across the US and Europe.</p>
-          <a href="#contact" class="btn btn-primary" data-hero>Start a conversation <span aria-hidden="true">→</span></a>
+  <!-- HERO -->
+  <section id="top" class="hero">
+    <div class="wrap hero-inner">
+      <div class="hero-text">
+        <div class="eyebrow-row">
+          <span class="dot"></span>
+          <span class="eyebrow">Product leadership · Fractional · Mentor</span>
         </div>
-        <div class="hero-portrait" data-hero>
-          <img
-            class="headshot"
-            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%23FBEDED'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' font-family='Newsreader,Georgia,serif' font-size='96' font-weight='500' fill='%23E5484D'%3EMB%3C/text%3E%3C/svg%3E"
-            width="300"
-            height="300"
-            alt="Mikhail Bogoslavtsev"
-          />
+        <h1>Product leadership that turns messy, high-stakes problems into software people actually use.</h1>
+        <p class="lead">13+ years in B2B SaaS — most recently building construction-tech products for some of the largest US homebuilders. I help founders ship the right thing, then build the team to keep shipping it.</p>
+        <p class="support">Full-time, fractional, or mentor. Based in Spain, working remotely across the US and Europe.</p>
+        <a href="#contact" class="btn" style="margin-top:32px;">Start a conversation <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="hero-media">
+        <!-- Drop a square headshot (~600×600 for retina) at headshot.jpg in the repo root.
+             Until then, onerror falls back to an "MB" monogram so nothing breaks. -->
+        <img class="headshot" src="headshot.jpg" width="300" height="300" alt="Mikhail Bogoslavtsev"
+             onerror="this.onerror=null;this.src=&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%23FBEDED'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' font-family='Newsreader,Georgia,serif' font-size='96' font-weight='500' fill='%23E5484D'%3EMB%3C/text%3E%3C/svg%3E&quot;">
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW I HELP -->
+  <section id="help" class="sec-pad">
+    <div class="wrap">
+      <div class="sec-head"><span class="index">01</span><h2>How I can be useful</h2></div>
+      <p class="sec-intro">Three ways to work together, depending on where you are.</p>
+      <div class="cards">
+        <div class="card">
+          <span class="bar"></span>
+          <span class="eyebrow">Head of Product (FTE)</span>
+          <h3>Own product end to end as part of your leadership team.</h3>
+          <p>For companies ready for a senior owner of strategy, roadmap, and team. I set direction, build the cross-functional org, and tie what we ship to how the business grows. Best when product needs an owner, not just more hands.</p>
+        </div>
+        <div class="card">
+          <span class="bar"></span>
+          <span class="eyebrow">Fractional Head of Product</span>
+          <h3>Senior product leadership without a full-time hire.</h3>
+          <p>Senior product direction now, without a full-time exec. I come in part-time to set strategy, untangle the roadmap, fix process, and coach your PMs and engineers into stronger calls — scoped to exactly what you need.</p>
+        </div>
+        <div class="card">
+          <span class="bar"></span>
+          <span class="eyebrow">Mentor &amp; coaching</span>
+          <h3>Help PMs and founders make sharper product calls.</h3>
+          <p>For PMs leveling up and founders learning to own product. We work through the real calls you're facing — discovery, prioritization, stakeholder pressure, careers — not generic theory. Direct, honest, grounded in having done the job.</p>
         </div>
       </div>
-    </section>
+      <a href="#contact" class="textlink help-link">Not sure which fits? Tell me what you're working on <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
 
-    <!-- HOW I HELP -->
-    <section id="help" class="section">
-      <div class="container">
-        <div class="section-head" data-reveal>
-          <span class="section-index">01</span>
-          <h2 class="section-title">How I can be useful</h2>
-        </div>
-        <p class="section-intro" data-reveal>Three ways to work together, depending on where you are.</p>
+  <!-- SELECTED WORK -->
+  <section id="work" class="sec-pad tinted">
+    <div class="wrap">
+      <div class="sec-head"><span class="index">02</span><h2>Selected work</h2></div>
+      <p class="work-note">Engagements shown anonymized to respect client confidentiality.</p>
 
-        <div class="help-grid">
-          <article class="card" data-reveal>
-            <span class="card-accent" aria-hidden="true"></span>
-            <span class="card-label">Head of Product (FTE)</span>
-            <h3 class="card-title">Own product end to end as part of your leadership team.</h3>
-            <p class="card-body">For companies ready for a senior owner of strategy, roadmap, and team. I set direction, build the cross-functional org, and tie what we ship to how the business grows. Best when product needs an owner, not just more hands.</p>
-          </article>
-
-          <article class="card" data-reveal>
-            <span class="card-accent" aria-hidden="true"></span>
-            <span class="card-label">Fractional Head of Product</span>
-            <h3 class="card-title">Senior product leadership without a full-time hire.</h3>
-            <p class="card-body">Senior product direction now, without a full-time exec. I come in part-time to set strategy, untangle the roadmap, fix process, and coach your PMs and engineers into stronger calls — scoped to exactly what you need.</p>
-          </article>
-
-          <article class="card" data-reveal>
-            <span class="card-accent" aria-hidden="true"></span>
-            <span class="card-label">Mentor &amp; coaching</span>
-            <h3 class="card-title">Help PMs and founders make sharper product calls.</h3>
-            <p class="card-body">For PMs leveling up and founders learning to own product. We work through the real calls you're facing — discovery, prioritization, stakeholder pressure, careers — not generic theory. Direct, honest, grounded in having done the job.</p>
-          </article>
-        </div>
-
-        <a href="#contact" class="arrow-link" data-reveal>Not sure which fits? Tell me what you're working on <span aria-hidden="true">→</span></a>
+      <div class="entry">
+        <h3>Product for a venture-backed construction-tech platform serving the top thirty US homebuilders.</h3>
+        <p class="context">Drone-based site intelligence for residential land developers</p>
+        <p class="body">Built a new product area from zero — turning aerial imagery, plans, and AI into tools that catch construction problems early. Ran discovery with enterprise homebuilders and led the team that shipped it to live job sites.</p>
       </div>
-    </section>
+      <div class="entry">
+        <h3>Product for a B2B fintech / wealth-management SaaS platform.</h3>
+        <p class="context">Enterprise platform, regulated environment</p>
+        <p class="body">Owned product improvements and customer integrations for institutional clients. Treated enterprise security and compliance as product requirements, not afterthoughts, and built the integration and onboarding foundations to land bigger partners.</p>
+      </div>
+      <div class="entry">
+        <h3>A decade in technical sales and product across heavy industry.</h3>
+        <p class="context">Paper, wood, food, glass, steel, pharma, construction, etc.</p>
+        <p class="body">Eleven years close to industrial customers — 500+ site visits across factory floors — selling, specifying, then shaping the products themselves. It's where I learned to trust the field over the conference room: sit with the customer first, build second.</p>
+      </div>
+    </div>
+  </section>
 
-    <!-- SELECTED WORK -->
-    <section id="work" class="section section-tint">
-      <div class="container">
-        <div class="section-head" data-reveal>
-          <span class="section-index">02</span>
-          <h2 class="section-title">Selected work</h2>
+  <!-- ABOUT -->
+  <section id="about" class="sec-pad">
+    <div class="wrap">
+      <div class="sec-head"><span class="index">03</span><h2>How I work</h2></div>
+      <div class="about-intro">
+        <p>13+ years in B2B SaaS, most recently in construction tech — turning messy operational problems into software people rely on every day.</p>
+        <p>I didn't start in product. A decade in technical sales taught me more than any framework: trust what you see in the field over what sounds good in the room, and build the second version of something real over the first version of something theoretical.</p>
+      </div>
+      <p class="beliefs-label">A few things I believe</p>
+      <div class="beliefs">
+        <div class="belief">
+          <h4>Outcomes over output.</h4>
+          <p>Shipping a lot isn't the goal. I'd rather ship three things that change the trajectory than thirty that fill a changelog.</p>
         </div>
-        <p class="section-intro work-note" data-reveal>Engagements shown anonymized to respect client confidentiality.</p>
-
-        <div class="work-list">
-          <article class="work-entry" data-reveal>
-            <h3 class="work-title">Product for a venture-backed construction-tech platform serving the top thirty US homebuilders.</h3>
-            <p class="work-context">Drone-based site intelligence for residential land developers</p>
-            <p class="work-body">Built a new product area from zero — turning aerial imagery, plans, and AI into tools that catch construction problems early. Ran discovery with enterprise homebuilders and led the team that shipped it to live job sites.</p>
-          </article>
-
-          <article class="work-entry" data-reveal>
-            <h3 class="work-title">Product for a B2B fintech / wealth-management SaaS platform.</h3>
-            <p class="work-context">Enterprise platform, regulated environment</p>
-            <p class="work-body">Owned product improvements and customer integrations for institutional clients. Treated enterprise security and compliance as product requirements, not afterthoughts, and built the integration and onboarding foundations to land bigger partners.</p>
-          </article>
-
-          <article class="work-entry" data-reveal>
-            <h3 class="work-title">A decade in technical sales and product across heavy industry.</h3>
-            <p class="work-context">Paper, wood, food, glass, steel, pharma, construction, etc.</p>
-            <p class="work-body">Eleven years close to industrial customers — 500+ site visits across factory floors — selling, specifying, then shaping the products themselves. It's where I learned to trust the field over the conference room: sit with the customer first, build second.</p>
-          </article>
+        <div class="belief">
+          <h4>Love the problem, not the solution.</h4>
+          <p>The fastest way to waste a quarter is to fall for your own idea. Stay anchored to the problem and the people you're solving for.</p>
+        </div>
+        <div class="belief">
+          <h4>Give teams the "why" and room to solve it.</h4>
+          <p>The best work comes from teams who understand the goal and are trusted to find the how. Make the direction unmistakable, then get out of the way.</p>
+        </div>
+        <div class="belief">
+          <h4>Bridge the technical and the commercial.</h4>
+          <p>I've worked both sides — engineering rooms and customer negotiations. A lot of my value is translating between them so everyone pulls the same direction.</p>
         </div>
       </div>
-    </section>
+      <p class="about-close">Full-time, fractional, or mentoring — the through-line is the same: get close to the real problem, make the direction clear, and help good people do their best work.</p>
+    </div>
+  </section>
 
-    <!-- ABOUT / HOW I WORK -->
-    <section id="about" class="section">
-      <div class="container">
-        <div class="section-head" data-reveal>
-          <span class="section-index">03</span>
-          <h2 class="section-title">How I work</h2>
+  <!-- BACKGROUND -->
+  <section id="background" class="sec-pad tinted">
+    <div class="wrap">
+      <div class="sec-head"><span class="index">04</span><h2>Background</h2></div>
+      <div class="timeline">
+        <div class="tl-item">
+          <span class="tl-dot"></span>
+          <h4>Product leadership — construction tech</h4>
+          <p>Built a new product area from zero for a platform serving the top thirty US homebuilders; led discovery, roadmap, and a cross-functional team to live product.</p>
         </div>
-
-        <div class="about-prose" data-reveal>
-          <p>13+ years in B2B SaaS, most recently in construction tech — turning messy operational problems into software people rely on every day.</p>
-          <p>I didn't start in product. A decade in technical sales taught me more than any framework: trust what you see in the field over what sounds good in the room, and build the second version of something real over the first version of something theoretical.</p>
+        <div class="tl-item">
+          <span class="tl-dot"></span>
+          <h4>Product management — B2B fintech SaaS</h4>
+          <p>Owned platform improvements, enterprise compliance, and customer integrations on a regulated wealth-management platform.</p>
         </div>
-
-        <p class="about-sublabel" data-reveal>A few things I believe</p>
-        <div class="belief-grid">
-          <div class="belief" data-reveal>
-            <h4 class="belief-title">Outcomes over output.</h4>
-            <p class="belief-body">Shipping a lot isn't the goal. I'd rather ship three things that change the trajectory than thirty that fill a changelog.</p>
-          </div>
-          <div class="belief" data-reveal>
-            <h4 class="belief-title">Love the problem, not the solution.</h4>
-            <p class="belief-body">The fastest way to waste a quarter is to fall for your own idea. Stay anchored to the problem and the people you're solving for.</p>
-          </div>
-          <div class="belief" data-reveal>
-            <h4 class="belief-title">Give teams the “why” and room to solve it.</h4>
-            <p class="belief-body">The best work comes from teams who understand the goal and are trusted to find the how. Make the direction unmistakable, then get out of the way.</p>
-          </div>
-          <div class="belief" data-reveal>
-            <h4 class="belief-title">Bridge the technical and the commercial.</h4>
-            <p class="belief-body">I've worked both sides — engineering rooms and customer negotiations. A lot of my value is translating between them so everyone pulls the same direction.</p>
-          </div>
+        <div class="tl-item">
+          <span class="tl-dot"></span>
+          <h4>Technical sales &amp; product — heavy industry</h4>
+          <p>Eleven years across paper, wood, food, glass, steel, pharma, and construction; 500+ customer site visits; progressed from technical sales into shaping the products themselves.</p>
         </div>
-
-        <p class="about-closing" data-reveal>Full-time, fractional, or mentoring — the through-line is the same: get close to the real problem, make the direction clear, and help good people do their best work.</p>
-      </div>
-    </section>
-
-    <!-- BACKGROUND -->
-    <section id="background" class="section section-tint">
-      <div class="container">
-        <div class="section-head" data-reveal>
-          <span class="section-index">04</span>
-          <h2 class="section-title">Background</h2>
-        </div>
-
-        <ol class="timeline">
-          <li class="timeline-item" data-reveal>
-            <h4 class="timeline-title">Product leadership — construction tech</h4>
-            <p class="timeline-body">Built a new product area from zero for a platform serving the top thirty US homebuilders; led discovery, roadmap, and a cross-functional team to live product.</p>
-          </li>
-          <li class="timeline-item" data-reveal>
-            <h4 class="timeline-title">Product management — B2B fintech SaaS</h4>
-            <p class="timeline-body">Owned platform improvements, enterprise compliance, and customer integrations on a regulated wealth-management platform.</p>
-          </li>
-          <li class="timeline-item" data-reveal>
-            <h4 class="timeline-title">Technical sales &amp; product — heavy industry</h4>
-            <p class="timeline-body">Eleven years across paper, wood, food, glass, steel, pharma, and construction; 500+ customer site visits; progressed from technical sales into shaping the products themselves.</p>
-          </li>
-          <li class="timeline-item" data-reveal>
-            <h4 class="timeline-title">Education &amp; foundations</h4>
-            <p class="timeline-body">MBA in International Business. Professional Scrum Master (PSM). Google Project Management certificate. Working across Russian (native), English (fluent), Spanish (A1), and German (A1).</p>
-          </li>
-        </ol>
-
-        <p class="timeline-foot" data-reveal>Full background and references available on request.</p>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="section">
-      <div class="container contact-inner">
-        <div class="contact-copy" data-reveal>
-          <div class="section-head">
-            <span class="section-index">05</span>
-            <h2 class="section-title contact-title">Start a conversation</h2>
-          </div>
-          <p class="contact-lead">Tell me what you're building or wrestling with — hiring, fractional help, or mentorship. I read everything that comes in.</p>
-        </div>
-
-        <div class="contact-form-wrap" data-reveal>
-          <form id="contact-form" class="contact-form" novalidate>
-            <input type="hidden" name="access_key" value="d2994d38-9323-4750-acb9-b10bfd6e2715" />
-            <input type="hidden" name="subject" value="New request from portfolio site" />
-            <input type="hidden" name="from_name" value="mikhailbogoslavtsev.github.io" />
-            <input type="hidden" name="redirect" value="false" />
-
-            <!-- Honeypot: real users leave blank, bots fill it. Web3Forms drops on `botcheck`. -->
-            <input
-              type="checkbox"
-              name="botcheck"
-              class="hp-field"
-              tabindex="-1"
-              autocomplete="off"
-              aria-hidden="true"
-            />
-
-            <div class="field">
-              <label for="name">Name</label>
-              <input id="name" name="name" type="text" required minlength="2" maxlength="80" autocomplete="name" />
-            </div>
-
-            <div class="field">
-              <label for="email">Email</label>
-              <input id="email" name="email" type="email" required maxlength="120" autocomplete="email" inputmode="email" />
-            </div>
-
-            <div class="field">
-              <label for="topic">What's this about?</label>
-              <select id="topic" name="topic" required>
-                <option value="" disabled selected>Select one…</option>
-                <option>Full-time role</option>
-                <option>Fractional product help</option>
-                <option>Mentorship</option>
-                <option>Something else</option>
-              </select>
-            </div>
-
-            <div class="field">
-              <label for="message">Message</label>
-              <textarea id="message" name="message" rows="4" required minlength="20" maxlength="3000"></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-primary btn-send" id="submit-btn">
-              <span class="btn-label">Send</span>
-            </button>
-
-            <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
-          </form>
-
-          <!-- Success card: shown in place of the form on a successful submit. -->
-          <div id="form-success" class="success-card" hidden>
-            <div class="success-icon" aria-hidden="true">✓</div>
-            <h3 class="success-title">Message received.</h3>
-            <p class="success-body">Thanks for reaching out — I read everything that comes in and will get back to you soon.</p>
-          </div>
+        <div class="tl-item">
+          <span class="tl-dot"></span>
+          <h4>Education &amp; foundations</h4>
+          <p>MBA in International Business. Professional Scrum Master (PSM). Google Project Management certificate. Working across Russian (native), English (fluent), Spanish (A1), and German (A1).</p>
         </div>
       </div>
-    </section>
-  </main>
+      <p class="tl-note">Full background and references available on request.</p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="sec-pad">
+    <div class="wrap contact-inner">
+      <div class="contact-left">
+        <div class="sec-head"><span class="index">05</span><h2>Start a conversation</h2></div>
+        <p>Tell me what you're building or wrestling with — hiring, fractional help, or mentorship. I read everything that comes in.</p>
+      </div>
+      <div class="contact-form-col">
+        <!-- Wired to Web3Forms (serverless email) with a honeypot + timing check for spam. -->
+        <form id="contact-form" novalidate>
+          <input type="hidden" name="access_key" value="d2994d38-9323-4750-acb9-b10bfd6e2715">
+          <input type="hidden" name="subject" value="New request from portfolio site">
+          <input type="hidden" name="from_name" value="mikhailbogoslavtsev.github.io">
+          <input type="hidden" name="redirect" value="false">
+          <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+          <div class="field">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required minlength="2" maxlength="80" autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required maxlength="120" autocomplete="email" inputmode="email">
+          </div>
+          <div class="field">
+            <label for="topic">What's this about?</label>
+            <select id="topic" name="topic" required>
+              <option value="" disabled selected>Select one…</option>
+              <option>Full-time role</option>
+              <option>Fractional product help</option>
+              <option>Mentorship</option>
+              <option>Something else</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" required minlength="20" maxlength="3000"></textarea>
+          </div>
+          <button type="submit" class="btn" id="submit-btn"><span class="btn-label">Send</span></button>
+          <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+        </form>
+        <div class="success" id="success">
+          <div class="check" aria-hidden="true">✓</div>
+          <h3>Message received.</h3>
+          <p>Thanks for reaching out — I read everything that comes in and will get back to you soon.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- FOOTER -->
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <span class="footer-text">Mikhail Bogoslavtsev · Product leadership, fractional &amp; mentorship · Valencia, Spain · Remote worldwide</span>
-      <a href="#top" class="footer-link">Back to top ↑</a>
+  <footer>
+    <div class="wrap footer-inner">
+      <span class="colophon">Mikhail Bogoslavtsev · Product leadership, fractional &amp; mentorship · Valencia, Spain · Remote worldwide</span>
+      <a href="#top">Back to top ↑</a>
     </div>
   </footer>
 
-  <script defer src="script.js"></script>
+  <script>
+    (function () {
+      var form = document.getElementById('contact-form');
+      var success = document.getElementById('success');
+      var statusEl = document.getElementById('form-status');
+      var submitBtn = document.getElementById('submit-btn');
+      if (!form) return;
+
+      var renderedAt = Date.now();
+      var MIN_FILL_MS = 3000;
+
+      function setStatus(text, kind) {
+        statusEl.textContent = text || '';
+        statusEl.classList.remove('is-success', 'is-error');
+        if (kind) statusEl.classList.add('is-' + kind);
+      }
+      function setLoading(loading) {
+        submitBtn.disabled = loading;
+        var label = submitBtn.querySelector('.btn-label');
+        if (label) label.textContent = loading ? 'Sending…' : 'Send';
+      }
+      function showSuccess() {
+        form.classList.add('hide');
+        success.classList.add('show');
+      }
+
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        setStatus('', null);
+
+        var hp = form.elements.namedItem('botcheck');
+        if (hp && hp.checked) { showSuccess(); return; }
+        if (Date.now() - renderedAt < MIN_FILL_MS) {
+          setStatus('Please take a moment to review your message before sending.', 'error');
+          return;
+        }
+        if (!form.checkValidity()) { form.reportValidity(); setStatus('Please fill in the required fields.', 'error'); return; }
+
+        setLoading(true);
+        var payload = Object.fromEntries(new FormData(form).entries());
+        try {
+          var res = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify(payload),
+          });
+          var json = await res.json().catch(function () { return {}; });
+          if (res.ok && json.success) {
+            showSuccess();
+          } else {
+            setStatus('Couldn’t send: ' + ((json && json.message) || 'something went wrong') + '. Please try again in a moment.', 'error');
+          }
+        } catch (err) {
+          setStatus('Network error — check your connection and try again.', 'error');
+        } finally {
+          setLoading(false);
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
