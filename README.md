@@ -1,14 +1,16 @@
 # mikhailbogoslavtsev.github.io
 
-Personal portfolio for Mikhail Bogoslavtsev. Static HTML/CSS/JS, deployed via GitHub Pages.
+Personal portfolio for Mikhail Bogoslavtsev. Single static page, deployed via GitHub Pages.
 
 Live site: <https://mikhailbogoslavtsev.github.io>
 
 ## Structure
 
-- `index.html` — single-page layout (hero, about, work, contact)
-- `styles.css` — design tokens + components (dark / light auto via `prefers-color-scheme`)
-- `script.js` — contact-form submission, honeypot + timing checks, char counter
+- `index.html` — the entire site (markup, CSS, and JS are inline in this one file)
+- `headshot.jpg` — hero photo (displayed in a 300px circle via `object-fit: cover`)
+
+To change the hero photo, replace `headshot.jpg` (a square image, ~600×600, looks best).
+To adjust how it's framed in the circle, edit `object-position` on the `.headshot` rule in `index.html`.
 
 ## Contact form
 
